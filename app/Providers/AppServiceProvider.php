@@ -16,6 +16,8 @@ class AppServiceProvider extends ServiceProvider {
    * Bootstrap any application services.
    */
   public function boot(): void {
-    //
+    DB::listen(function ($query) {
+      Log::channel('db')->info($query->sql, ['Bindings' => $query->bindings, 'Time' => $query->time]);
+    });
   }
 }

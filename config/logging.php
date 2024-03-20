@@ -57,6 +57,16 @@ return [
       'channels' => ['single'],
       'ignore_exceptions' => false,
     ],
+  
+  'db' => [
+    'driver' => 'single',
+    'path' => storage_path('logs/db.log'),
+    'formatter' => LineFormatter::class,
+    'formatter_with' => [
+      'format' => '[%datetime%] %message% %context%\n',
+      'dateFormat' => 'Y-m-d H:i:s'
+    ],
+  ],
 
     'single' => [
       'driver' => 'single',
